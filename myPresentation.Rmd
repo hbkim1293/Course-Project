@@ -1,0 +1,55 @@
+---
+title: "Pitch Presentation"
+author: "Huibeom Kim"
+date: "July 25, 2018"
+output:
+  ioslides_presentation: default
+  slidy_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+##Introduction
+- I created a shiny application which show you a tree plot of Iris data, and tell you the Iris species depending on the value that you entered in the application.  
+- You can do some manipulate in [this shiny app.](https://hbkim1293.shinyapps.io/ProjectApp/)
+- This presentation is composed of
+1. Shiny app's documentation
+2. Code for the app
+
+##Documentation  
+  
+- My application show tree plot depending on cp value which you can choose in slider. It is based on iris data.  
+- You can also enter any value of Sepal.Length, Sepal.Width, Petal.Length, Petal.Width. Then my app will predict speices of iris based on values you choose.
+```{r, message=FALSE, comment=""}
+rbind(iris[1:2,], iris[51:52,], iris[101:102,])
+```
+
+##Code (Focus on reative command)
+```{r, eval=FALSE, echo=TRUE}
+#Each time you move the slider, cpvalue is recalculated and model is reconstructed. 
+modFit <- reactive({
+  cpInput <- input$cpslider
+  rpart(Species ~., data = iris, control = rpart.control(cp = cpInput))
+  })
+#If you enter value on each textbox, app will predict species.
+modPred <- reactive({
+    SepalLengthPred <- as.numeric(input$SepalLength)
+    SepalWidthPred <- as.numeric(input$SepalWidth)
+    PetalLengthPred <- as.numeric(input$PetalLength)
+    PetalWidthPred <- as.numeric(input$PetalWidth)
+    predict(modFit(), newdata = data.frame(Sepal.Length = SepalLengthPred,
+                            Sepal.Width = SepalWidthPred,
+                            Petal.Length = PetalLengthPred,
+                            Petal.Width = PetalWidthPred), type = "class")
+  })
+```
+
+##Links 
+
+- Play tha app here : https://hbkim1293.shinyapps.io/ProjectApp/
+- Check full code here :   
+https://github.com/hbkim1293/Course-Project
+- Also check code for this presentation :  
+https://github.com/hbkim1293/Course-Project/blob/master/myPresentation.Rmd
