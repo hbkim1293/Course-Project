@@ -7,3 +7,6 @@ I created a shiny application which show you a tree plot of Iris data, and tell 
 Click this [link](https://hbkim1293.shinyapps.io/ProjectApp/)
 
 ### Reproducible Pitch
+In this presentation, you can see how I made the shiny app.  
+I described documentation and some code.
+Click this [link](http://rpubs.com/HUIBEOM/myPresentation)
