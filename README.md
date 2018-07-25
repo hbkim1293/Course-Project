@@ -4,4 +4,4 @@ This peer assessed assignment has two parts. First, I created a Shiny applicatio
 
 ### Shiny application
 I created a shiny application which show you a tree plot of Iris data, and tell you the Iris species depending on the value that you entered in the application.  
-Click this [link](http://127.0.0.1:5942)
+Click this [link](https://hbkim1293.shinyapps.io/ProjectApp/)
